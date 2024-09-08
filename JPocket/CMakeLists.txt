@@ -2,9 +2,16 @@
 
 set(SOURCES
     "src/entry_point.cpp"
+    "src/cpu.cpp"
+)
+
+set(HEADERS
+    "include/typedefs.h"
+    "include/cpu.h"
 )
 
 add_executable(${project_name} ${SOURCES} ${HEADERS})
+target_include_directories(${project_name} PRIVATE include)
 
 find_package(SDL2 REQUIRED)
 #find_package(SDL2_image REQUIRED)
