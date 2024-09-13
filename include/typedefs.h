@@ -1,7 +1,15 @@
 #ifndef JUMI_JPOCKET_TYPEDEFS_H
 #define JUMI_JPOCKET_TYPEDEFS_H
-
 #include <cstdint>
+#include <cassert>
+
+#ifdef NDEBUG
+    #define JUMI_ASSERT(x)       
+    #define JUMI_STATIC_ASSERT(x)
+#else
+    #define JUMI_ASSERT(x)        assert(x)
+    #define JUMI_STATIC_ASSERT(x) static_assert(x)
+#endif
 
 namespace JPocket
 {
@@ -20,6 +28,7 @@ namespace JPocket
     using uint16 = std::uint16_t;
     using uint32 = std::uint32_t;
     using uint64 = std::uint64_t;
+
 
 }
 
