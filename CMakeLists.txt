@@ -12,6 +12,7 @@ set(SOURCES
     "src/application.cpp"
     "src/cpu.cpp"
     "src/window_handler.cpp"
+    "src/window_specification.cpp"
     "src/gui_handler.cpp"
     "src/resources.cpp"
 )
@@ -21,6 +22,7 @@ set(HEADERS
     "include/typedefs.h"
     "include/cpu.h"
     "include/window_handler.h"
+    "include/window_specification.h"
     "include/gui_handler.h"
     "include/resources.h"
 )

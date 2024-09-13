@@ -19,11 +19,14 @@ namespace JPocket
         ~gui_handler();
 
         void init(SDL_Window* window, SDL_Renderer* renderer);
+        void prepare_ui();
         void render_ui();
         [[nodiscard]] gui_signals check_signals() const;
+        [[nodiscard]] float get_menubar_height() const;
 
     private:
         bool _initialized;
+        float _menubar_height;
         gui_signals _signals;
     };
 

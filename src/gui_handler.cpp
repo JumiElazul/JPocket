@@ -11,6 +11,7 @@ namespace JPocket
 
     gui_handler::gui_handler()
         : _initialized(false)
+        , _menubar_height()
         , _signals()
     {
 
@@ -49,7 +50,7 @@ namespace JPocket
         }
     }
 
-    void gui_handler::render_ui()
+    void gui_handler::prepare_ui()
     {
         if (!_initialized)
             return;
@@ -58,7 +59,7 @@ namespace JPocket
         ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
-         ImGui::ShowDemoWindow();
+        //ImGui::ShowDemoWindow();
         if (ImGui::BeginMainMenuBar())
         {
             if (ImGui::BeginMenu("ROM"))
@@ -81,9 +82,13 @@ namespace JPocket
                 ImGui::EndMenu();
             }
 
+            _menubar_height = ImGui::GetFrameHeight();
             ImGui::EndMainMenuBar();
         }
+    }
 
+    void gui_handler::render_ui()
+    {
         ImGui::Render();
         ImGui_ImplSDLRenderer2_RenderDrawData(ImGui::GetDrawData());
     }
@@ -91,6 +96,11 @@ namespace JPocket
     gui_signals gui_handler::check_signals() const
     {
         return _signals;
+    }
+
+    float gui_handler::get_menubar_height() const
+    {
+        return _menubar_height;
     }
 
 }
