@@ -59,6 +59,8 @@ namespace JPocket
         ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
+        _signals = gui_signals();
+
         //ImGui::ShowDemoWindow();
         if (ImGui::BeginMainMenuBar())
         {
@@ -66,11 +68,11 @@ namespace JPocket
             {
                 if (ImGui::MenuItem("Load ROM"))
                 {
-
+                    _signals.load_rom = true;
                 }
                 if (ImGui::MenuItem("Close ROM"))
                 {
-
+                    _signals.close_rom = true;
                 }
 
                 ImGui::EndMenu();

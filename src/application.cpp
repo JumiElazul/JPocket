@@ -1,4 +1,5 @@
 #include "application.h"
+#include "logger.h"
 #include "window_handler.h"
 #include "window_specification.h"
 #include "gui_handler.h"
@@ -15,6 +16,8 @@ namespace JPocket
         , _gui()
         , _running(true)
     {
+        logger::init();
+
         _gui.init(_window_handler.window(), _window_handler.renderer());
 
         {
@@ -70,7 +73,16 @@ namespace JPocket
     void application::poll_gui_signals()
     {
         gui_signals signals = _gui.check_signals();
-        if (signals.exit_clicked)
+        if (signals.load_rom)
+        {
+
+            // Logic for loading a ROM
+        }
+        else if (signals.close_rom)
+        {
+
+        }
+        else if (signals.exit_clicked)
         {
             _running = false;
             return;

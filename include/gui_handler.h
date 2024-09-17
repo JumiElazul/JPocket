@@ -9,6 +9,8 @@ namespace JPocket
 
     struct gui_signals
     {
+        bool load_rom     = false;
+        bool close_rom    = false;
         bool exit_clicked = false;
     };
 

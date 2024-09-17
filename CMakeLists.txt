@@ -10,6 +10,8 @@ set(SOURCES
     "src/entry_point.cpp"
 
     "src/application.cpp"
+    "src/logger.cpp"
+
     "src/cpu.cpp"
     "src/window_handler.cpp"
     "src/window_specification.cpp"
@@ -19,6 +21,8 @@ set(SOURCES
 
 set(HEADERS
     "include/application.h"
+    "include/logger.h"
+
     "include/typedefs.h"
     "include/cpu.h"
     "include/window_handler.h"
@@ -26,6 +30,10 @@ set(HEADERS
     "include/gui_handler.h"
     "include/resources.h"
 )
+
+if (MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+endif()
 
 add_executable(JPocket ${SOURCES} ${HEADERS})
 target_include_directories(JPocket PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
@@ -44,5 +52,8 @@ add_custom_command(
 
 find_package(SDL2 CONFIG REQUIRED)
 find_package(imgui CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+
 target_link_libraries(JPocket PRIVATE SDL2::SDL2 SDL2::SDL2main)
 target_link_libraries(JPocket PRIVATE imgui::imgui)
+target_link_libraries(JPocket PRIVATE spdlog::spdlog)
